@@ -28,11 +28,3 @@ client_scripts {
 server_scripts {
     'server/**.lua'
 }
-
--------------------
------ Exports -----
--------------------
-
-exports {
-    --Any Exports Here Muppet
-}
