@@ -1,13 +1,18 @@
 -- by: minipunch
--- for: Initially made for USA Realism RP (https://usarrp.gg)
--- purpose: Provide public servant with blips for all other active emergency personnel
+-- for: USA Realism RP
+-- purpose: provide public servant with blips for all other active emergency personnel
 
 local ACTIVE = false
 local ACTIVE_EMERGENCY_PERSONNEL = {}
 
+------------
+-- events --
+------------
 RegisterNetEvent("eblips:toggle")
 AddEventHandler("eblips:toggle", function(on)
+	-- toggle blip display --
 	ACTIVE = on
+	-- remove all blips if turned off --
 	if not ACTIVE then
 		RemoveAnyExistingEmergencyBlips()
 	end
@@ -28,6 +33,10 @@ AddEventHandler("eblips:remove", function(src)
 	RemoveAnyExistingEmergencyBlipsById(src)
 end)
 
+
+---------------
+-- functions --
+---------------
 function RemoveAnyExistingEmergencyBlips()
 	for src, info in pairs(ACTIVE_EMERGENCY_PERSONNEL) do
 		local possible_blip = GetBlipFromEntity(GetPlayerPed(GetPlayerFromServerId(src)))
@@ -46,6 +55,9 @@ function RemoveAnyExistingEmergencyBlipsById(id)
 		end
 end
 
+-----------------------------------------------------
+-- Watch for emergency personnel to show blips for --
+-----------------------------------------------------
 Citizen.CreateThread(function()
 	while true do
 		if ACTIVE then
@@ -59,6 +71,7 @@ Citizen.CreateThread(function()
 						SetBlipColour(blip, info.color)
 						SetBlipAsShortRange(blip, true)
 						SetBlipDisplay(blip, 4)
+						SetBlipShowCone(blip, true)
 						BeginTextCommandSetBlipName("STRING")
 						AddTextComponentString(info.name)
 						EndTextCommandSetBlipName(blip)
