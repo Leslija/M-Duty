@@ -1,7 +1,3 @@
--- by: minipunch
--- for: Initially made for USA Realism RP (https://usarrp.gg)
--- purpose: Provide public servants with blips for all other active emergency personnel
-
 local ACTIVE_EMERGENCY_PERSONNEL = {}
 
 RegisterServerEvent("eblips:add")
@@ -15,10 +11,13 @@ end)
 
 RegisterServerEvent("eblips:remove")
 AddEventHandler("eblips:remove", function(src)
+	-- remove from list --
 	ACTIVE_EMERGENCY_PERSONNEL[src] = nil
+	-- update client blips --
 	for k, v in pairs(ACTIVE_EMERGENCY_PERSONNEL) do
 		TriggerClientEvent("eblips:remove", tonumber(k), src)
 	end
+	-- deactive blips when off duty --
 	TriggerClientEvent("eblips:toggle", src, false)
 end)
 
