@@ -81,7 +81,7 @@ end
 
 else 
     Citizen.Trace("\nERROR: " ..GetCurrentResourceName().. " Needs to be Named M-Duty\n===========")
-  end
-  else 
+end
+else 
     Citizen.Trace("\n"..GetCurrentResourceName().. " is currently disabled as Config.ScriptEnabled = " ..tostring(Config.ScriptEnabled).. "\n===========")
-  end
+end
