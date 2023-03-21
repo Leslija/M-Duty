@@ -17,9 +17,6 @@ Config.Hud.Colour = "~h~~b~"
 Config.Hud.JobText = "Job:"
 Config.Hud.DefaultJob = "~w~None"
 
---BLIPS CONFIG
-Config.Blips.UpdateTime = 1
-
 --DEBUGGING
 Config.Debugging = true --Set to false if you don't want things to be logged in console
 
