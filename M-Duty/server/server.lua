@@ -1,5 +1,6 @@
 if Config.ScriptEnabled then
-
+        if GetCurrentResourceName() == "M-Duty" then
+        
 local Job = Config.Hud.DefaultJob
 RegisterCommand(Config.Duty.Command, function(source, args, raw)
     for _, i in pairs(Config.LEOJobs) do 
@@ -67,4 +68,5 @@ AddEventHandler("M:LargeNotification", function(user, style, title, msg)
     TriggerClientEvent('t-notify:client:Custom', user, {style  =  style, duration  =  10000, title  =  title, message  =  msg, sound  =  false})
 end)
 
+end
 end
